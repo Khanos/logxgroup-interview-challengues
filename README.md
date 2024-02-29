@@ -6,9 +6,19 @@ make along with your solution.
 
 Result: 
 
-* The clock show the time of 03:00, so the initial angle is 90 degrees.
-* 20 minuts has pass, and the clock should show 03:20. So the angle whould be:
-  * 1/3 of 90 degress, wich is the same as 30 degrees.
+* The hour hand move:
+
+360/12/60 = 0.5degree.
+
+* The minut hand move:
+
+360/60 = 6 degree
+
+* If we start at 03:00, 20min in the future should be:
+
+angleHour = (currentHour * 30) +  (currentMin * 0.5)
+
+angleMin = (currentMin * 6) +  (20 * 6)
 
 
 ## Coding Challenge
