@@ -1,13 +1,26 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
 import Challengue1 from './components/Challengue1.vue'
+import Challengue2 from './components/Challengue2.vue'
 </script>
 
 <template>
-  <Challengue1 />
+  <div class="container">
+    <p>This is the first challengue</p>
+    <Challengue1 />
+  </div>
+  <div class="container">
+    <p>This is the Second challengue (writable-computed)</p>
+    <Challengue2 />
+  </div>
 </template>
 
 <style scoped>
+.container{
+  border: solid 2px white;
+  margin: 5rem;
+  padding: 5rem;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
