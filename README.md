@@ -13,7 +13,13 @@ Result:
 
 ## Coding Challenge
 
-This is a VueJs challenges - Please refer to the code.
+The solution to all VueJs problems are located inside the `challengue` folder. It's using a Vite scafold project and divided into components. In order to run the project refer to you need to:
+
+```
+$ cd challenges
+$ npm run dev
+```
+
 * First challengue: The msg variable needs to be surrounded by curlybraces in order to be used on the view (template) section of a vuejs page.
 * Second Challengue: In order to make a computed value writable you need to manually create the getter and setter funcionst.
 * Third Challengue: In order to create the composable we need to make all props reactive using the ref module from vue.
