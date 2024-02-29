@@ -2,16 +2,21 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import Challengue1 from './components/Challengue1.vue'
 import Challengue2 from './components/Challengue2.vue'
+import Challengue3 from './components/Challengue3.vue'
 </script>
 
 <template>
   <div class="container">
-    <p>This is the first challengue</p>
+    <p>This is the first challengue (hello message)</p>
     <Challengue1 />
   </div>
   <div class="container">
     <p>This is the Second challengue (writable-computed)</p>
     <Challengue2 />
+  </div>
+  <div class="container">
+    <p>This is the third challengue (useCounter)</p>
+    <Challengue3 />
   </div>
 </template>
 
