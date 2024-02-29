@@ -16,3 +16,13 @@ Result:
 This is a VueJs challenges - Please refer to the code.
 * First challengue: The msg variable needs to be surrounded by curlybraces in order to be used on the view (template) section of a vuejs page.
 * Second Challengue: In order to make a computed value writable you need to manually create the getter and setter funcionst.
+* Third Challengue: In order to create the composable we need to make all props reactive using the ref module from vue.
+
+## Third Challengue
+
+The solution is in the `analitycsChallengue.js` file in the root directory. In order to run the script you need to run the following on the terminal:
+
+
+```
+node analitycsChallengue.js
+```
