@@ -32,3 +32,20 @@ The solution is in the `analitycsChallengue.js` file in the root directory. In o
 ```
 node analitycsChallengue.js
 ```
+
+## Database Query Questions
+Write SQL queries for:
+
+1. Get the employees hired after 2020 from the employees table
+  
+query: 'SELECT * FROM employees WHERE YEAR(hiredate) < 2020' 
+
+2. Within the employees table find the maximum salary from each department
+
+query: 'SELECT salary, id, empno, departmentid
+FROM employees
+GROUP BY departmentid;' 
+query: 'SELECT MAX(salary) AS LargestPrice FROM PrevResult;'
+
+3. For all employees that are not assigned to more than one project, get their employee
+number, name, department name, and role name
