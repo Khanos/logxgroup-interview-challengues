@@ -47,15 +47,71 @@ node analitycsChallengue.js
 Write SQL queries for:
 
 1. Get the employees hired after 2020 from the employees table
-  
-query: 'SELECT * FROM employees WHERE YEAR(hiredate) < 2020' 
-
 2. Within the employees table find the maximum salary from each department
-
-query: 'SELECT salary, id, empno, departmentid
-FROM employees
-GROUP BY departmentid;' 
-query: 'SELECT MAX(salary) AS LargestPrice FROM PrevResult;'
-
 3. For all employees that are not assigned to more than one project, get their employee
-number, name, department name, and role name
+
+### Running the Database
+
+This project uses Docker to run the PostgreSQL database and PgAdmin. Make sure you have [Docker](https://www.docker.com/products/docker-desktop) installed on your machine.
+
+1. Navigate to the `./database` directory:
+
+```sh
+$ cd database
+```
+
+2. Build and run the Docker containers:
+
+```sh
+$ docker-compose -f docker-compose-postgres.yml up -d
+```
+
+This command will start two Docker containers: `container-postgresdb` for the PostgreSQL database and `container-pgadmin` for PgAdmin.
+
+3. Access PgAdmin by opening your web browser and navigating to http://localhost:80. Log in with the email and password specified in the `.env` file (PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD).
+
+4. In PgAdmin, create a new server with the following connection details:
+
+    * Host: db (the name of the Docker service)
+    * Port: 5432
+    * Maintenance database: mydatabase (or the value of POSTGRES_DB in the .env file)
+    * Username: postgres (or the value of POSTGRES_USER in the .env file)
+    * Password: password (or the value of POSTGRES_PASSWORD in the .env file)
+
+5. Once connected, you can run the init.sql script to initialize the database:
+
+    * Right-click on the mydatabase database (or the name you used for POSTGRES_DB) and select Query Tool.
+    * Open the init.sql file, copy its contents, and paste them into the Query Tool.
+    * Click the Execute button to run the script.
+
+6. You can now view the solution by running the `solution.sql` script in the same way.
+
+
+```sh
+-- 1. Get the employees hired after 2020 from the employees table
+
+SELECT *
+FROM Employees
+WHERE hire_date > '2020-12-31';
+
+-- 2. Within the employees table find the maximum salary from each department
+
+SELECT d.department_name, MAX(e.salary) as max_salary
+FROM Employees e
+JOIN Departments d ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+-- 3. For all employees that are not assigned to more than one project, get their employee
+-- number, name, department name, and role name
+
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name, r.role_name
+FROM Employees e
+JOIN Departments d ON e.department_id = d.department_id
+JOIN Roles r ON e.role_id = r.role_id
+WHERE e.employee_id NOT IN (
+  SELECT employee_id
+  FROM EmployeeProjects
+  GROUP BY employee_id
+  HAVING COUNT(project_id) > 1
+);
+```
